@@ -1,0 +1,345 @@
+:root {
+    --primary-blue: #007bff;
+    --primary-gray: #6c757d;
+    --blue-gray-50: #f8f9fc;
+    --secondary-gray: #ff6600;
+    --disabled-gray: #ff6600;
+    --white: #ffffff;
+    --foreground-blue: #175cd3;
+    --feedback-gray: #6c6c7f;
+}
+
+body.word-search {
+    background-color: var(--blue-gray-50);
+    color: var(--secondary-color); /* Use the secondary color as text color */
+}
+
+#side_nav {
+    background: var(--white);
+    min-width: 320px;
+    max-width: 320px;
+    transition: all 0.2s;
+    box-shadow: 4px 0px 6px -2px #12131f08;
+    box-shadow: 12px 12px 16px -4px #12131f14;
+}
+
+.content {
+    min-height: 100vh;
+    width: 100%;
+}
+
+#side_nav {
+    margin-left: -320px;
+    position: fixed;
+    min-height: 100vh;
+    z-index: 1;
+}
+
+#side_nav.active {
+    margin-left: 0;
+}
+
+.pdf-style {
+    background-color: var(--white); /* PDF-like background color */
+    padding: 42px;
+    border-radius: 4px;
+    white-space: pre-wrap;
+    box-shadow: 0px 8px 8px -4px #12131f14;
+    box-shadow: 0px 20px 24px -4px #12131f14;
+    font-family: Cormorant Garamond;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+}
+
+#replaceButton,
+#deleteButton,
+#resultsHeader,
+#wordCountResult {
+    display: none; /* Hide the buttons by default */
+}
+
+label {
+    pointer-events: none;
+}
+
+.form-group input {
+    margin-bottom: 10px; /* Adjust the margin to your preference */
+    border-radius: 6px;
+}
+
+input.custom-input {
+    width: 264px;
+    height: 44px;
+    padding: 10px, 14px, 10px, 14px;
+    border-radius: 6px;
+    border: 1px;
+    background: var(--white);
+    font-size: 14px;
+    color: #dadde4;
+    box-shadow: 0px 1px 2px 0px #12131f0d;
+}
+
+input::placeholder {
+    color: #6c6c7f;
+}
+
+/* Hover state */
+input:hover {
+    /* Add hover styles here */
+    background-color: #fdfdfd;
+}
+
+/* Focus state */
+input:focus {
+    /* Add focus styles here */
+    outline: none;
+    border: 1px solid #84caff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Read-only state */
+input:read-only {
+    /* Add read-only styles here */
+    border: 1px solid #dadde4;
+    background-color: #f4f5f7;
+    color: #6c6c7f;
+}
+
+.custom-invalid-feedback {
+    margin-bottom: 8px;
+    color: var(--feedback-gray);
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: right;
+}
+
+#wordCountResult {
+    text-align: right;
+}
+
+.warning-msg {
+    margin-bottom: 10px; /* Adjust the margin to your preference */
+}
+
+.input-label-small-semibold {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #6c6c7f;
+}
+
+.menu-header {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    color: var(--foreground-blue);
+}
+
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: var(--white);
+    box-shadow: 0px 4px 6px -2px #12131f08;
+    box-shadow: 0px 12px 16px -4px #12131f14;
+    transition: top 0.3s;
+}
+
+#navbar.navbar-hide {
+    top: -60px;
+}
+
+#resultsHeader {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #6c6c7f;
+}
+
+#similarWordsList {
+    list-style-type: none;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #6c6c7f;
+    padding: 0px;
+}
+
+ul li {
+    text-align: left;
+}
+
+#searchButton {
+    margin-top: auto;
+}
+
+.custom-button-col-left {
+    padding-left: 12px !important;
+    padding-right: 4px !important;
+}
+.custom-button-col-right {
+    padding-right: 12px !important;
+    padding-left: 4px !important;
+}
+
+.text-message {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #6c6c7f;
+    padding: 0px;
+}
+.text-message.center {
+    text-align: center;
+}
+
+#replaceWith {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #6c6c7f;
+}
+
+#cancelReplaceButton {
+    width: 160px;
+}
+
+.btn-custom {
+    display: flex;
+    align-items: center;
+}
+
+.btn-custom svg {
+    margin-right: 4px; /* Adjust the margin as needed */
+    margin-bottom: 3px;
+    vertical-align: middle;
+}
+
+button.btn-delete {
+    color: #b42318;
+    background-color: white;
+    border-color: #b42318;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0em;
+    height: 44px;
+    vertical-align: middle;
+    border-radius: 6px;
+}
+
+button.btn-delete:hover {
+    color: #912018;
+    background-color: #fef3f2;
+    border-color: #fda29b;
+}
+
+button.btn-replace {
+    color: #fff;
+    background-color: #027a48;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0em;
+    height: 44px;
+    vertical-align: middle;
+    border-radius: 6px;
+}
+
+button.btn-replace:hover {
+    color: #fff;
+    background-color: #05603a;
+}
+
+button.btn-replace-sm {
+    color: #fff;
+    background-color: #027a48;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0em;
+    height: 38px;
+    vertical-align: middle;
+    border-radius: 6px;
+}
+
+button.btn-replace-sm:hover {
+    color: #fff;
+    background-color: #05603a;
+}
+
+button.btn-search {
+    color: #fff;
+    background-color: #1570ef;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0em;
+    height: 38px;
+    vertical-align: middle;
+    border-radius: 6px;
+}
+
+button.btn-search:hover {
+    color: #fff;
+    background-color: #175cd3;
+}
+
+button.btn-cancel {
+    color: #404257;
+    background-color: white;
+    border-color: #404257;
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: 0em;
+    height: 44px;
+    vertical-align: middle;
+    border-radius: 6px;
+}
+
+button.btn-cancel:hover {
+    color: #2f303d;
+    background-color: #f0f1f4;
+    border-color: #2f303d;
+}
+
+#replaceDone {
+    display: none;
+}
+
+#deleteDone {
+    display: none;
+}

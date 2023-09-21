@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="styles.css" />
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+        />
+        <title>Word Search</title>
+    </head>
+
+    <body class="word-search">
+        <div class="main-container d-flex">
+            <div class="sidebar" id="side_nav">
+                <div
+                    class="header-box pt-3 pb-4 d-flex justify-content-between"
+                >
+                    <div class="d-flex align-items-center ml-4">
+                        <span class="menu-header">Menu</span>
+                    </div>
+                    <div class="d-flex align-items-center mr-2">
+                        <button class="btn px-1 py-0 close-btn">
+                            <svg
+                                width="36"
+                                height="36"
+                                viewBox="0 0 36 36"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M23 13L13 23M13 13L23 23"
+                                    stroke="#175CD3"
+                                    stroke-width="1.67"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!--sidebar content-->
+                <div class="ml-4 mr-4">
+                    <!-- Search input field -->
+                    <div class="form-group mb-3">
+                        <div class="form-row align-items-end">
+                            <div class="col">
+                                <!-- Search input field -->
+                                <div class="form-group mb-3">
+                                    <label
+                                        for="searchInput"
+                                        class="input-label-small-semibold"
+                                        >Search</label
+                                    >
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="searchInput"
+                                        placeholder="Enter a word"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-auto mb-3">
+                                <!-- Search button -->
+                                <button
+                                    class="btn btn-search"
+                                    id="searchButton"
+                                >
+                                    Search
+                                </button>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div
+                                class="custom-invalid-feedback ml-auto"
+                                id="wordCountResult"
+                            ></div>
+                        </div>
+                    </div>
+                    <!--complete messages-->
+                    <div
+                        id="replaceDone"
+                        class="form-row align-items-center text-message center"
+                    >
+                        <div class="d-flex justify-content-center">
+                            <small
+                                class="form-text text-message center"
+                            ></small>
+                        </div>
+                    </div>
+                    <div
+                        id="deleteDone"
+                        class="form-row align-items-center text-message center"
+                    >
+                        <div class="d-flex justify-content-center">
+                            <small
+                                class="form-text text-message center"
+                            ></small>
+                        </div>
+                    </div>
+
+                    <!-- Similar word results section -->
+                    <div id="resultsSection" class="mb-4">
+                        <h5 id="resultsHeader">Suggested Results</h5>
+                        <ul id="similarWordsList">
+                            <!-- Similar words will be displayed here -->
+                        </ul>
+                    </div>
+                    <!-- Replace and Delete buttons -->
+                    <div class="row">
+                        <div class="col custom-button-col-left">
+                            <button
+                                class="btn btn-replace btn-block btn-custom"
+                                id="replaceButton"
+                            >
+                                <svg
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 21 20"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <g clip-path="url(#clip0_495_117)">
+                                        <path
+                                            d="M19.6666 3.33331V8.33332M19.6666 8.33332H14.6666M19.6666 8.33332L15.7999 4.69998C14.9043 3.80391 13.7963 3.14932 12.5792 2.79729C11.3622 2.44527 10.0758 2.40727 8.84016 2.68686C7.60447 2.96645 6.45975 3.55451 5.51281 4.39616C4.56586 5.23782 3.84756 6.30564 3.42492 7.49998M1.33325 16.6666V11.6666M1.33325 11.6666H6.33325M1.33325 11.6666L5.19992 15.3C6.09554 16.1961 7.20356 16.8506 8.42059 17.2027C9.63762 17.5547 10.924 17.5927 12.1597 17.3131C13.3954 17.0335 14.5401 16.4455 15.487 15.6038C16.434 14.7621 17.1523 13.6943 17.5749 12.5"
+                                            stroke="white"
+                                            stroke-width="1.67"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_495_117">
+                                            <rect
+                                                width="20"
+                                                height="20"
+                                                fill="white"
+                                                transform="translate(0.5)"
+                                            />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                Replace
+                            </button>
+                        </div>
+                        <div class="col custom-button-col-right">
+                            <button
+                                class="btn btn-delete btn-block btn-custom"
+                                id="deleteButton"
+                            >
+                                <svg
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 20 20"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M2.5 5.00002H4.16667M4.16667 5.00002H17.5M4.16667 5.00002V16.6667C4.16667 17.1087 4.34226 17.5326 4.65482 17.8452C4.96738 18.1578 5.39131 18.3334 5.83333 18.3334H14.1667C14.6087 18.3334 15.0326 18.1578 15.3452 17.8452C15.6577 17.5326 15.8333 17.1087 15.8333 16.6667V5.00002H4.16667ZM6.66667 5.00002V3.33335C6.66667 2.89133 6.84226 2.4674 7.15482 2.15484C7.46738 1.84228 7.89131 1.66669 8.33333 1.66669H11.6667C12.1087 1.66669 12.5326 1.84228 12.8452 2.15484C13.1577 2.4674 13.3333 2.89133 13.3333 3.33335V5.00002M8.33333 9.16669V14.1667M11.6667 9.16669V14.1667"
+                                        stroke="#B42318"
+                                        stroke-width="1.67"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="replaceUI" style="display: none">
+                        <div class="form-row align-items-end">
+                            <div class="col">
+                                <div class="form-group mb-3" id="replaceInput">
+                                    <label
+                                        id="replaceWith"
+                                        for="replacementInput"
+                                        class="form-label"
+                                        >Replace with</label
+                                    >
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="replacementInput"
+                                        placeholder="Enter a replacement"
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-auto mb-3">
+                                <button
+                                    class="btn btn-replace-sm"
+                                    id="confirmReplace"
+                                >
+                                    Replace
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-row align-items-end">
+                            <small class="form-text text-message mb-4"
+                                >Don't worry, you can reverse it 😎</small
+                            >
+                        </div>
+
+                        <div
+                            class="form-row justify-content-center align-items-center"
+                        >
+                            <button
+                                class="btn btn-cancel"
+                                id="cancelReplaceButton"
+                            >
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                    <div id="deleteUI" style="display: none">
+                        <div>
+                            <div
+                                class="text-message mb-4"
+                                id="deleteWarning"
+                            ></div>
+                        </div>
+                        <div class="row">
+                            <div class="col custom-button-col-left">
+                                <button
+                                    class="btn btn-delete btn-block btn-custom"
+                                    id="confirmDeleteButton"
+                                >
+                                    <svg
+                                        width="20"
+                                        height="20"
+                                        viewBox="0 0 20 20"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M2.5 5.00002H4.16667M4.16667 5.00002H17.5M4.16667 5.00002V16.6667C4.16667 17.1087 4.34226 17.5326 4.65482 17.8452C4.96738 18.1578 5.39131 18.3334 5.83333 18.3334H14.1667C14.6087 18.3334 15.0326 18.1578 15.3452 17.8452C15.6577 17.5326 15.8333 17.1087 15.8333 16.6667V5.00002H4.16667ZM6.66667 5.00002V3.33335C6.66667 2.89133 6.84226 2.4674 7.15482 2.15484C7.46738 1.84228 7.89131 1.66669 8.33333 1.66669H11.6667C12.1087 1.66669 12.5326 1.84228 12.8452 2.15484C13.1577 2.4674 13.3333 2.89133 13.3333 3.33335V5.00002M8.33333 9.16669V14.1667M11.6667 9.16669V14.1667"
+                                            stroke="#B42318"
+                                            stroke-width="1.67"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                        />
+                                    </svg>
+                                    Delete
+                                </button>
+                            </div>
+                            <div class="col custom-button-col-right">
+                                <button
+                                    class="btn btn-cancel btn-block"
+                                    id="cancelDeleteButton"
+                                >
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <nav id="navbar" class="navbar navbar-expand-lg">
+                    <div class="container-fluid">
+                        <div
+                            class="d-flex justify-content-center align-items-center"
+                        >
+                            <button
+                                class="btn px-1 py-0 open-btn"
+                                style="line-height: 1"
+                            >
+                                <svg
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 20 20"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    style="
+                                        vertical-align: middle;
+                                        margin-right: 8px;
+                                    "
+                                >
+                                    <path
+                                        d="M2.5 10H17.5M2.5 5H17.5M2.5 15H17.5"
+                                        stroke="#175CD3"
+                                        stroke-width="1.67"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    />
+                                </svg>
+                                <span
+                                    class="menu-header"
+                                    style="vertical-align: middle"
+                                    >Menu</span
+                                >
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+                <!--white space-->
+                <div
+                    class="d-flex justify-content-center align-items-center container"
+                    style="margin-top: 102px"
+                />
+                <!--main content-->
+                <div
+                    class="d-flex justify-content-center align-items-center container"
+                >
+                    <div id="textContent" class="pdf-style"></div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="client.js"></script>
+
+        <script>
+            $(".open-btn").on("click", function () {
+                $(".sidebar").addClass("active");
+                $("#navbar").addClass("navbar-hide");
+            });
+            $(".close-btn").on("click", function () {
+                $(".sidebar").removeClass("active");
+                $("#navbar").removeClass("navbar-hide");
+            });
+        </script>
+    </body>
+</html>
