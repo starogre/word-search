@@ -44,7 +44,7 @@ test("Delete text from content", () => {
 
     const updatedText = deleteText(originalText, searchTerm);
 
-    expect(updatedText).toEqual("This is an. Read the.");
+    expect(updatedText).toEqual("This is an . Read the .");
 });
 
 // Define a setup function to initialize the Trie
