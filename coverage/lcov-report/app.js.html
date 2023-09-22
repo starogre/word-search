@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">36.98% </span>
+                <span class="strong">35.13% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>27/73</span>
+                <span class='fraction'>26/74</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">7.14% </span>
+                <span class="strong">6.25% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/14</span>
+                <span class='fraction'>1/16</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">36.98% </span>
+                <span class="strong">35.13% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>27/73</span>
+                <span class='fraction'>26/74</span>
             </div>
         
             
@@ -222,7 +222,14 @@
 <a name='L157'></a><a href='#L157'>157</a>
 <a name='L158'></a><a href='#L158'>158</a>
 <a name='L159'></a><a href='#L159'>159</a>
-<a name='L160'></a><a href='#L160'>160</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L160'></a><a href='#L160'>160</a>
+<a name='L161'></a><a href='#L161'>161</a>
+<a name='L162'></a><a href='#L162'>162</a>
+<a name='L163'></a><a href='#L163'>163</a>
+<a name='L164'></a><a href='#L164'>164</a>
+<a name='L165'></a><a href='#L165'>165</a>
+<a name='L166'></a><a href='#L166'>166</a>
+<a name='L167'></a><a href='#L167'>167</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -246,6 +253,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -297,6 +305,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -334,9 +345,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -346,17 +364,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -405,6 +419,7 @@ const buildTrie = <span class="fstat-no" title="function not covered" >(t</span>
     }
 &nbsp;
     const words = <span class="cstat-no" title="statement not covered" >text.split(/\s+/);</span> // split by whitespace to get words
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    words.forEach(<span class="fstat-no" title="function not covered" >(w</span>ord) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        trie.add(word);</span>
     });
@@ -412,7 +427,7 @@ const buildTrie = <span class="fstat-no" title="function not covered" >(t</span>
 };
 &nbsp;
 // Define a route for retrieving text files
-app.get("/initializeTrie", <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
+app.get("/initialize-trie", <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >    if (!trie || !textContent) {</span>
 <span class="cstat-no" title="statement not covered" >        try {</span>
             const filePath = <span class="cstat-no" title="statement not covered" >path.join(__dirname, "corpus", "hemingway.txt");</span>
@@ -422,7 +437,7 @@ app.get("/initializeTrie", <span class="fstat-no" title="function not covered" >
             // Read the text file
 <span class="cstat-no" title="statement not covered" >            textContent = await fs.promises.readFile(filePath, "utf-8");</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >            trie = buildTrie(textContent.toLowerCase(), trie);</span>
+<span class="cstat-no" title="statement not covered" >            trie = buildTrie(textContent, trie);</span>
 <span class="cstat-no" title="statement not covered" >            console.log("Trie initialized");</span>
 &nbsp;
             // Send the text content as a response
@@ -452,12 +467,15 @@ app.get("/api/search", <span class="fstat-no" title="function not covered" >as</
         const searchTerm = <span class="cstat-no" title="statement not covered" >req.query.query;</span> // get query param
 <span class="cstat-no" title="statement not covered" >        console.log(`Finding "${searchTerm}" and similar results`);</span>
 &nbsp;
-        const searchResults = <span class="cstat-no" title="statement not covered" >searchTrie(trie, searchTerm);</span>
+        let searchResults = <span class="cstat-no" title="statement not covered" >searchTrie(trie, searchTerm);</span>
+        // not best UX to send back *anything*, but we could improve search later
+        // sends back to user first 3 words in trie in case no search results
+<span class="cstat-no" title="statement not covered" >        if (searchResults.length === 0) {</span>
+<span class="cstat-no" title="statement not covered" >            searchResults = trie.getThreeWords();</span>
+        }
 &nbsp;
         // respond with results as JSON
 <span class="cstat-no" title="statement not covered" >        res.status(200).json({ searchResults });</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >        console.log(searchResults);</span>
     } catch (error) {
 <span class="cstat-no" title="statement not covered" >        console.error("Error in /api/search:", error);</span>
 <span class="cstat-no" title="statement not covered" >        res.status(500).json({ error: "Internal Server Error" });</span>
@@ -465,7 +483,7 @@ app.get("/api/search", <span class="fstat-no" title="function not covered" >as</
 });
 &nbsp;
 // route for counting exact instances of search term
-app.get("/countExactInstances", <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
+app.get("/count-exact-instances", <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
     const { searchTerm } = <span class="cstat-no" title="statement not covered" >req.query;</span> // Get the searchTerm from the query paramaters
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    if (!searchTerm || searchTerm.trim() === "") {</span>
@@ -486,13 +504,14 @@ function replaceText(textContent, searchTerm, replacementWord) {
 }
 &nbsp;
 // route for replacing text
-app.post("/replaceText", <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
+app.post("/replace-text", <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
     const { searchTerm, replacementWord } = <span class="cstat-no" title="statement not covered" >req.body;</span>
 <span class="cstat-no" title="statement not covered" >    console.log(`Replacing "${searchTerm}" with "${replacementWord}"`);</span>
 &nbsp;
     // replace search term in cache content
 <span class="cstat-no" title="statement not covered" >    textContent = replaceText(textContent, searchTerm, replacementWord);</span>
-<span class="cstat-no" title="statement not covered" >    trie = buildTrie(textContent.toLowerCase(), trie);</span>
+<span class="cstat-no" title="statement not covered" >    trie.reset();</span>
+<span class="cstat-no" title="statement not covered" >    trie = buildTrie(textContent, trie);</span>
 &nbsp;
     // send updated text back to client
 <span class="cstat-no" title="statement not covered" >    res.status(200).send(textContent);</span>
@@ -500,24 +519,26 @@ app.post("/replaceText", <span class="fstat-no" title="function not covered" >(r
 &nbsp;
 function deleteText(textContent, searchTerm) {
     // regex deletes spaces around word but preserves punctuation using capturing groups
-    const regex = new RegExp(
-        `(\\s*\\b${searchTerm}\\b\\s*([.,?!]))|\\s*\\b${searchTerm}\\b\\s*`,
-        "g"
+&nbsp;
+    textContent = textContent.replace(
+        new RegExp(`\\b${searchTerm}\\b`, "g"),
+        ""
     );
-    textContent = textContent.replace(regex, "$2");
+&nbsp;
     return textContent;
 }
 &nbsp;
 // route for deleting text
-app.post("/deleteText", <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
+app.post("/delete-text", <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
     const { searchTerm } = <span class="cstat-no" title="statement not covered" >req.body;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    console.log(`Deleting instances of "${searchTerm}"`);</span>
 &nbsp;
     // replace search term in cache content
 <span class="cstat-no" title="statement not covered" >    textContent = deleteText(textContent, searchTerm);</span>
-<span class="cstat-no" title="statement not covered" >    trie = buildTrie(textContent.toLowerCase(), trie);</span>
-<span class="cstat-no" title="statement not covered" >    console.log("Trie rebuilt");</span>
+    // Ensure that the Trie is built after textContent is modified
+<span class="cstat-no" title="statement not covered" >    trie.reset();</span>
+<span class="cstat-no" title="statement not covered" >    trie = buildTrie(textContent, trie);</span>
 &nbsp;
     // send updated text back to client
 <span class="cstat-no" title="statement not covered" >    res.status(200).send(textContent);</span>
@@ -547,7 +568,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-09-21T02:17:20.188Z
+                at 2023-09-22T01:59:08.698Z
             </div>
         <script src="prettify.js"></script>
         <script>

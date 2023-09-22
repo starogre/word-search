@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const fetchTextContent = () => {
         // Fetch text content from the server
-        fetch("/initializeTrie")
+        fetch("/initialize-trie")
             .then((response) => {
                 if (response.ok) {
                     return response.text();
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             })
             .then((data) => {
-                const textContent = document.getElementById("textContent");
+                const textContent = document.querySelector("#textContent");
                 textString = data;
                 textContent.textContent = data;
                 console.log("Text content fetched");
@@ -24,23 +24,42 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     fetchTextContent();
 
-    const searchInput = document.getElementById("searchInput");
-    const searchButton = document.getElementById("searchButton");
-    const replaceButton = document.getElementById("replaceButton");
-    const deleteButton = document.getElementById("deleteButton");
-    const confirmDeleteButton = document.getElementById("confirmDeleteButton");
-    const cancelDeleteButton = document.getElementById("cancelDeleteButton");
-    const deleteWarning = document.getElementById("deleteWarning");
-    const deleteUI = document.getElementById("deleteUI");
-    const wordCountResult = document.getElementById("wordCountResult");
-    const textContent = document.getElementById("textContent");
-    const replaceDone = document.getElementById("replaceDone");
-    const deleteDone = document.getElementById("deleteDone");
+    // search UI
+    const searchInput = document.querySelector("#searchInput");
+    const searchButton = document.querySelector("#searchButton");
+    const replaceButton = document.querySelector("#replaceButton");
+    const deleteButton = document.querySelector("#deleteButton");
+    const confirmDeleteButton = document.querySelector("#confirmDeleteButton");
+    const cancelDeleteButton = document.querySelector("#cancelDeleteButton");
+    const deleteWarning = document.querySelector("#deleteWarning");
+    const deleteUI = document.querySelector("#deleteUI");
+    const wordCountResult = document.querySelector("#wordCountResult");
+    const textContent = document.querySelector("#textContent");
+    const replaceDone = document.querySelector("#replaceDone");
+    const deleteDone = document.querySelector("#deleteDone");
+
+    // navbar and side bar
+    const openButton = document.querySelector(".open-btn");
+    const closeButton = document.querySelector(".close-btn");
+    const sidebar = document.querySelector(".sidebar");
+    const navbar = document.querySelector("#navbar");
+
+    // open side bar
+    openButton.addEventListener("click", function () {
+        sidebar.classList.add("active");
+        navbar.classList.add("navbar-hide");
+    });
+
+    // close side bar
+    closeButton.addEventListener("click", function () {
+        sidebar.classList.remove("active");
+        navbar.classList.remove("navbar-hide");
+    });
 
     searchInput.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
-            event.preventDefault(); // Prevent the default form submission behavior
-            searchButton.click(); // Trigger a click event on the search button
+            event.preventDefault();
+            searchButton.click();
         }
     });
 
@@ -57,8 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Event listener for the search button
     searchButton.addEventListener("click", () => {
-        //test
-        const searchTerm = document.getElementById("searchInput").value.trim();
+        const searchTerm = document.querySelector("#searchInput").value.trim();
 
         fetch(`/api/search?query=${searchTerm}`)
             .then((response) => response.json())
@@ -75,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     // Display the similar words in the "Results" section
                     const resultsList =
-                        document.getElementById("similarWordsList");
+                        document.querySelector("#similarWordsList");
                     resultsList.innerHTML = "";
                     resultsSection.style.display = "block";
 
@@ -94,20 +112,18 @@ document.addEventListener("DOMContentLoaded", () => {
                         resultsHeader.style.display = "inline-block";
                     }
                 }
-                console.log(data); // can update the UI with results
             })
             .catch((error) => {
                 console.error("Error:", error);
             });
-        //
 
-        // GET request to count exact instances
+        // request to count exact instances
         if (searchTerm.trim() === "") {
             // when the search term is empty or contains only spaces
             console.log("Search term is empty or contains only spaces");
         } else {
             fetch(
-                `/countExactInstances?searchTerm=${encodeURIComponent(
+                `/count-exact-instances?searchTerm=${encodeURIComponent(
                     searchTerm
                 )}`
             )
@@ -118,12 +134,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     return response.json();
                 })
                 .then((data) => {
-                    // handle count data
                     const count = data.count;
                     instanceCount = count;
-                    console.log(`Exact instances found: ${count}`);
                     wordCountResult.textContent = `${count} exact instances found`;
-
                     if (searchTerm) {
                         if (count > 0) {
                             replaceButton.style.display = "inline-block";
@@ -147,21 +160,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     replaceButton.addEventListener("click", () => {
-        // Hide the search-related UI elements
         searchInput.setAttribute("readonly", "readonly");
         deleteButton.style.display = "none";
         replaceButton.style.display = "none";
         resultsSection.style.display = "none";
         searchButton.style.display = "none";
-
-        // Show the replace-related UI elements
         replaceUI.style.display = "block";
     });
 
     confirmReplace.addEventListener("click", () => {
         // Get the replacement word from the input field
         const replacementWord = replacementInput.value.trim();
-        const searchTerm = document.getElementById("searchInput").value.trim();
+        const searchTerm = document.querySelector("#searchInput").value.trim();
         const message = `You replaced all ${instanceCount} instances of "${searchTerm}" with "${replacementWord}".`;
 
         const requestBody = {
@@ -170,7 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
         console.log(requestBody);
 
-        fetch("/replaceText", {
+        fetch("/replace-text", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -193,12 +203,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.error("Error replacing text:", error);
             });
 
-        // Hide the replace-related UI elements
         replaceUI.style.display = "none";
         replaceDone.style.display = "inline-block";
         replaceDone.textContent = message;
-
-        // Show the search-related UI elements again
         searchInput.removeAttribute("readonly");
         searchInput.value = "";
         searchButton.style.display = "inline-block";
@@ -221,14 +228,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     deleteButton.addEventListener("click", () => {
         const wordToDelete = document
-            .getElementById("searchInput")
+            .querySelector("#searchInput")
             .value.trim();
         const message = `Are you sure you want to delete all ${instanceCount} instances of "${wordToDelete}"? You can't reverse it 😢`;
 
         deleteWarning.textContent = message;
         deleteUI.style.display = "block";
-
-        // Hide the search-related UI elements
         searchInput.setAttribute("readonly", "readonly");
         deleteButton.style.display = "none";
         replaceButton.style.display = "none";
@@ -237,8 +242,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     confirmDeleteButton.addEventListener("click", () => {
-        // Get the replacement word from the input field
-        const searchTerm = document.getElementById("searchInput").value.trim();
+        // get the replacement word from the input field
+        const searchTerm = document.querySelector("#searchInput").value.trim();
         const message = `You deleted all ${instanceCount} instances of "${searchTerm}".`;
 
         const requestBody = {
@@ -246,7 +251,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
         console.log(requestBody);
 
-        fetch("/deleteText", {
+        fetch("/delete-text", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -269,12 +274,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.error("Error replacing text:", error);
             });
 
-        // Hide the replace-related UI elements
         deleteUI.style.display = "none";
         deleteDone.style.display = "inline-block";
         deleteDone.textContent = message;
-
-        // Show the search-related UI elements again
         searchInput.removeAttribute("readonly");
         searchInput.value = "";
         searchButton.style.display = "inline-block";
@@ -283,7 +285,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     cancelDeleteButton.addEventListener("click", () => {
-        // Hide the search-related UI elements
         searchInput.removeAttribute("readonly");
         searchButton.style.display = "inline-block";
         wordCountResult.style.display = "none";

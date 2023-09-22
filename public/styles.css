@@ -40,7 +40,7 @@ body.word-search {
 }
 
 .pdf-style {
-    background-color: var(--white); /* PDF-like background color */
+    background-color: var(--white);
     padding: 42px;
     border-radius: 4px;
     white-space: pre-wrap;
@@ -57,7 +57,7 @@ body.word-search {
 #deleteButton,
 #resultsHeader,
 #wordCountResult {
-    display: none; /* Hide the buttons by default */
+    display: none; /* hide the buttons by default */
 }
 
 label {
@@ -65,7 +65,7 @@ label {
 }
 
 .form-group input {
-    margin-bottom: 10px; /* Adjust the margin to your preference */
+    margin-bottom: 10px;
     border-radius: 6px;
 }
 
@@ -85,23 +85,17 @@ input::placeholder {
     color: #6c6c7f;
 }
 
-/* Hover state */
 input:hover {
-    /* Add hover styles here */
     background-color: #fdfdfd;
 }
 
-/* Focus state */
 input:focus {
-    /* Add focus styles here */
     outline: none;
     border: 1px solid #84caff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Read-only state */
 input:read-only {
-    /* Add read-only styles here */
     border: 1px solid #dadde4;
     background-color: #f4f5f7;
     color: #6c6c7f;
@@ -123,7 +117,7 @@ input:read-only {
 }
 
 .warning-msg {
-    margin-bottom: 10px; /* Adjust the margin to your preference */
+    margin-bottom: 10px;
 }
 
 .input-label-small-semibold {
@@ -237,7 +231,7 @@ ul li {
 }
 
 .btn-custom svg {
-    margin-right: 4px; /* Adjust the margin as needed */
+    margin-right: 4px;
     margin-bottom: 3px;
     vertical-align: middle;
 }
@@ -342,4 +336,12 @@ button.btn-cancel:hover {
 
 #deleteDone {
     display: none;
+}
+
+.active-state {
+    display: "inline-block";
+}
+
+.inactive-state {
+    display: "none";
 }
